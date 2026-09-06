@@ -1,0 +1,29 @@
+{                                                                                                                                                           
+    "MetricAlarms": [
+        {
+            "AlarmName": "test-alarm",
+            "AlarmArn": "arn:aws:cloudwatch:us-west-2:690561075909:alarm:test-alarm",
+            "AlarmConfigurationUpdatedTimestamp": "2026-09-03T13:31:22.283000-04:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "INSUFFICIENT_DATA",
+            "StateReason": "Unchecked: Initial alarm creation",
+            "StateUpdatedTimestamp": "2026-09-03T13:31:22.283000-04:00",
+            "MetricName": "custom-error",
+            "Namespace": "Custom",
+            "Statistic": "Sum",
+            "Dimensions": [],
+            "Period": 60,                                                                                                                                   
+            "EvaluationPeriods": 1,                                                                                                                         
+            "DatapointsToAlarm": 1,                                                                                                                         
+            "Threshold": 100.0,                                                                                                                             
+            "ComparisonOperator": "GreaterThanThreshold",                                                                                                   
+            "TreatMissingData": "missing",                                                                                                                  
+            "StateTransitionedTimestamp": "2026-09-03T13:31:22.283000-04:00"                                                                                
+        }                                                                                                                                                   
+    ],                                                                                                                                                      
+    "CompositeAlarms": [],                                                                                                                                  
+    "LogAlarms": []                                                                                                                                         
+}                   
