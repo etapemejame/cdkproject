@@ -1,0 +1,65 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Typescript CDK Deployments
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    strategy:
+      matrix:
+        node-version: [22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Installs AWS Cli
+    - name: AWS CLI
+      run: |
+        sudo rm -rf /usr/local/aws-cli /usr/local/bin/aws
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        unzip -q awscliv2.zip
+        sudo ./aws/install --update
+        aws --version
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+        aws-region: ${{ secrets.AWS_REGION }}
+        role-session-name: GitHubActions-CDKDeploy
+
+    - name: verify user credentials
+      run: aws sts get-caller-identity
+
+    - name: install web app dependencies
+      working-directory: ./web
+      run: npm ci
+
+    - name: build web app
+      working-directory: ./web
+      run: npm run build
+
+    - name: install AWS CDK
+      run: sudo npm i -g aws-cdk
+
+    - name: install deployment dependencies
+      working-directory: ./ts-webdepl
+      run: npm ci
+
+    - name: run cdk synth
+      working-directory: ./ts-webdepl
+      run: cdk synth
+
+    - name: cdk deploy
+      working-directory: ./ts-webdepl
+      run: cdk deploy --require-approval never
+    
