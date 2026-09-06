@@ -20,7 +20,7 @@ class PyWebdeplStack(Stack):
         # Point project to web application directory
         ui_dir = os.path.join(os.path.dirname(__file__), "..", "..", "web", "dist")
         print(f"UI-DIR: {ui_dir}")
-        if not Path.exists(ui_dir):
+        if not os.path.exists(ui_dir):
             print(f"Ui dir not found: {ui_dir}")
             return
 
