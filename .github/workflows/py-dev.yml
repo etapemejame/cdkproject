@@ -30,6 +30,16 @@ jobs:
         sudo ./aws/install --update
         aws --version
 
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+        aws-region: ${{ secrets.AWS_REGION }}
+        role-session-name: GitHubActions-CDKDeploy
+
+    - name: verify user credentials
+      run: aws sts get-caller-identity
+      
     - name: install web app dependencies
       working-directory: ./web
       run: npm ci
@@ -48,15 +58,6 @@ jobs:
     - name: run cdk synth
       working-directory: ./py-webdepl
       run: cdk synth
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-        aws-region: ${{ secrets.AWS_REGION }}
-
-    - name: verify user credentials
-      run: aws sts get-caller-identity
 
     - name: cdk deploy
       working-directory: ./py-webdepl
