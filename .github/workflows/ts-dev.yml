@@ -63,3 +63,7 @@ jobs:
       working-directory: ./ts-webdepl
       run: cdk deploy --require-approval never
     
+    - name: cdk destroy
+      working-directory: ./ts-webdepl
+      run: cdk destroy --require-approval never
+    

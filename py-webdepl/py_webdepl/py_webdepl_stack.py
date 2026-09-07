@@ -15,7 +15,7 @@ class PyWebdeplStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         # Create the static content S3 bucket
-        deployment_bucket = aws_s3.Bucket(self, 'PyWebDeplBucket')
+        deployment_bucket = aws_s3.Bucket(self, 'PyWebDeplBucket', removal_policy='DESTROY', auto_delete_objects=True)
 
         # Point project to web application directory
         ui_dir = os.path.join(os.path.dirname(__file__), "..", "..", "web", "dist")

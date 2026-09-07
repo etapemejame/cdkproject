@@ -3,8 +3,8 @@ import { Construct } from 'constructs';
 import { Bucket } from 'aws-cdk-lib/aws-s3';
 import { join } from 'path';
 import { existsSync } from 'fs';
-import { Distribution, OriginAccessIdentity, S3OriginAccessControl } from 'aws-cdk-lib/aws-cloudfront';
-import { S3Origin, S3BucketOrigin } from 'aws-cdk-lib/aws-cloudfront-origins';
+import { Distribution, OriginAccessIdentity } from 'aws-cdk-lib/aws-cloudfront';
+import { S3BucketOrigin } from 'aws-cdk-lib/aws-cloudfront-origins';
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
 
 export class TsWebdeplStack extends cdk.Stack {
