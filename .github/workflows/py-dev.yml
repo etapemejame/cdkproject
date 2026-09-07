@@ -55,9 +55,17 @@ jobs:
       working-directory: ./py-webdepl
       run: pip3 install -r requirements.txt
 
+    - name: install dev deployment dependencies
+      working-directory: ./py-webdepl
+      run: pip3 install -r requirements-dev.txt
+
     - name: run cdk synth
       working-directory: ./py-webdepl
       run: cdk synth
+
+    - name: run tests before deployment
+      working-directory: ./py-webdepl
+      run: pytest
 
     - name: cdk deploy
       working-directory: ./py-webdepl
