@@ -4,8 +4,10 @@
 name: Typescript CDK Deployments
 
 on:
-  push:
+  pull_request:
     branches: [ "main" ]
+    types:
+      - closed
 
 jobs:
   build:
