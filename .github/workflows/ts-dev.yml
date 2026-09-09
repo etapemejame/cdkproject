@@ -59,11 +59,11 @@ jobs:
       working-directory: ./ts-webdepl
       run: cdk synth
 
-    - name: cdk deploy
-      working-directory: ./ts-webdepl
-      run: cdk deploy --require-approval never
+    # - name: cdk deploy
+    #   working-directory: ./ts-webdepl
+    #   run: cdk deploy --require-approval never
     
-    - name: cdk destroy
-      working-directory: ./ts-webdepl
-      run: cdk destroy --force
+    # - name: cdk destroy
+    #   working-directory: ./ts-webdepl
+    #   run: cdk destroy --force
     

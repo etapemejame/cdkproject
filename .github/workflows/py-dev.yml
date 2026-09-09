@@ -67,11 +67,11 @@ jobs:
       working-directory: ./py-webdepl
       run: pytest
 
-    - name: cdk deploy
-      working-directory: ./py-webdepl
-      run: cdk deploy --require-approval never
-
-    - name: cdk destroy
-      working-directory: ./py-webdepl
-      run: cdk destroy --force
+    # - name: cdk deploy
+    #   working-directory: ./py-webdepl
+    #   run: cdk deploy --require-approval never
+      
+    # - name: cdk destroy
+    #   working-directory: ./py-webdepl
+    #   run: cdk destroy --force
     
