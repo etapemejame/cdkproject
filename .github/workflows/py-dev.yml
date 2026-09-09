@@ -5,7 +5,7 @@ name: Python CDK Deployments
 
 on:
   push:
-    branches: [ "py-dev" ]
+    branches: [ "py-dev" ] # This will run when pushed to py-dev branch.
 
 jobs:
   build:
