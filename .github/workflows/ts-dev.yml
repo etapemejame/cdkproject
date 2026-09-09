@@ -5,7 +5,7 @@ name: Typescript CDK Deployments
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "ts-dev" ]
 
 jobs:
   build:
