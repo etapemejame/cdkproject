@@ -4,7 +4,7 @@
 name: Typescript CDK Deployments
 
 on:
-  pull_request:
+  pull_request: # deployment will only happen when pull request is created
     branches: [ "main" ]
     types:
       - closed
